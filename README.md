@@ -1,4 +1,4 @@
-# TWRP Device Tree for Motorola G71 5G (corfur).
+# TWRP Device Tree for Motorola edge 30 neo (miami).
 
 ## Setup repo tool
 Setup repo tool from here https://source.android.com/setup/develop#installing-repo
@@ -17,11 +17,8 @@ and then paste the following
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-<remote name="github"
-	fetch="https://github.com/" />
-
-<project path="device/motorola/corfur"
-	name="moto-corfur/twrp_device_motorola_corfur"
+<project path="device/motorola/miami"
+	name="ast261/twrp_device_motorola_miami"
 	remote="github"
 	revision="android-12.1" />
 </manifest>
@@ -37,14 +34,14 @@ repo sync -j$(nproc --all)
 To build, execute this command:
 
 ```
-. build/envsetup.sh; lunch twrp_corfur-eng; make bootimage
+. build/envsetup.sh; lunch twrp_miami-eng; mka bootimage
 ```
 
 To test it:
 
 ```
 # To temporarily boot it
-fastboot boot out/target/product/corfur/boot.img 
+fastboot boot out/target/product/miami/boot.img 
 
 # To make twrp replace stock recovery temporarily boot twrp and navigate
 to advanced menu and select Flash Current TWRP option.
