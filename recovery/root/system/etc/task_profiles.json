@@ -20,21 +20,47 @@
       "Controller": "cpuset",
       "File": "audio-app/cpus"
     },
-
+    {
+      "Name": "MemStats",
+      "Controller": "memory",
+      "File": "memory.stat"
+    },
     {
       "Name": "MemLimit",
       "Controller": "memory",
-      "File": "memory.limit_in_bytes"
+      "File": "memory.limit_in_bytes",
+      "FileV2": "memory.max"
     },
     {
       "Name": "MemSoftLimit",
       "Controller": "memory",
-      "File": "memory.soft_limit_in_bytes"
+      "File": "memory.soft_limit_in_bytes",
+      "FileV2": "memory.low"
     },
     {
       "Name": "MemSwappiness",
       "Controller": "memory",
       "File": "memory.swappiness"
+    },
+    {
+      "Name": "MemUsage",
+      "Controller": "memory",
+      "File": "memory.usage_in_bytes"
+    },
+    {
+      "Name": "MemAndSwapUsage",
+      "Controller": "memory",
+      "File": "memory.memsw.usage_in_bytes"
+    },
+    {
+      "Name": "MemPressureLevel",
+      "Controller": "memory",
+      "File": "memory.pressure_level"
+    },
+    {
+      "Name": "MemCgroupEventControl",
+      "Controller": "memory",
+      "File": "cgroup.event_control"
     },
     {
       "Name": "UClampMin",
@@ -202,7 +228,19 @@
         }
       ]
     },
-
+    {
+      "Name": "Dex2oatPerformance",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpu",
+            "Path": "dex2oat"
+          }
+        }
+      ]
+    },
     {
       "Name": "CpuPolicySpread",
       "Actions": [
@@ -455,7 +493,6 @@
         }
       ]
     },
-
     {
       "Name": "LowIoPriority",
       "Actions": [
@@ -556,6 +593,33 @@
           {
             "Controller": "cpuset",
             "Path": "system-background"
+          }
+        }
+      ]
+    },
+
+    {
+      "Name": "SFMainBoostPolicy",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpuset",
+            "Path": "boost-app"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "SFRenderEngineBoostPolicy",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpuset",
+            "Path": "boost-app"
           }
         }
       ]
@@ -668,6 +732,10 @@
       "Profiles": [ "ServicePerformance", "LowIoPriority", "TimerSlackNormal" ]
     },
     {
+      "Name": "VMCompilationPerformance",
+      "Profiles": [ "HighPerformance", "ProcessCapacityHigh", "LowIoPriority", "TimerSlackNormal" ]
+    },
+    {
       "Name": "SCHED_SP_RT_APP",
       "Profiles": [ "RealtimePerformance", "MaxIoPriority", "TimerSlackNormal" ]
     },
@@ -697,7 +765,11 @@
     },
     {
       "Name": "Dex2OatBootComplete",
-      "Profiles": [ "SCHED_SP_BACKGROUND" ]
+      "Profiles": [ "Dex2oatPerformance", "LowIoPriority", "TimerSlackHigh" ]
+    },
+    {
+      "Name": "OtaProfiles",
+      "Profiles": [ "ServiceCapacityLow", "LowIoPriority", "HighEnergySaving" ]
     }
   ]
 }

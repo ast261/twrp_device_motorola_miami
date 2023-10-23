@@ -5,7 +5,7 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/twrp_corfur.mk
+    $(LOCAL_DIR)/twrp_miami.mk
 
 COMMON_LUNCH_CHOICES := \
-    twrp_corfur-eng
+    twrp_miami-eng

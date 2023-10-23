@@ -45,6 +45,11 @@
       "Name": "UClampMax",
       "Controller": "cpu",
       "File": "cpu.uclamp.max"
+    },
+    {
+      "Name": "FreezerState",
+      "Controller": "freezer",
+      "File": "cgroup.freeze"
     }
   ],
 
@@ -66,11 +71,11 @@
       "Name": "Frozen",
       "Actions": [
         {
-          "Name": "JoinCgroup",
+          "Name": "SetAttribute",
           "Params":
           {
-            "Controller": "freezer",
-            "Path": "frozen"
+            "Name": "FreezerState",
+            "Value": "1"
           }
         }
       ]
@@ -79,11 +84,11 @@
       "Name": "Unfrozen",
       "Actions": [
         {
-          "Name": "JoinCgroup",
+          "Name": "SetAttribute",
           "Params":
           {
-            "Controller": "freezer",
-            "Path": ""
+            "Name": "FreezerState",
+            "Value": "0"
           }
         }
       ]

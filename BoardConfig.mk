@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/motorola/corfur
+DEVICE_PATH := device/motorola/miami
 
 # Architecture
 TARGET_ARCH := arm64
@@ -22,7 +22,7 @@ TARGET_2ND_CPU_VARIANT := generic
 TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a75
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := corfur
+TARGET_BOOTLOADER_BOARD_NAME := miami
 TARGET_NO_BOOTLOADER := true
 
 # Kernel
@@ -53,9 +53,9 @@ TARGET_USERIMAGES_USE_F2FS := true
 
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
 
-BOARD_SUPER_PARTITION_SIZE := 14512291840
+BOARD_SUPER_PARTITION_SIZE := 9529458688
 BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
-BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 7256141824 # BOARD_SUPER_PARTITION_SIZE/2 - 4MB
+BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 4764729344 # BOARD_SUPER_PARTITION_SIZE/2 - 4MB
 BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := product system system_ext vendor
 
 BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
@@ -110,7 +110,7 @@ TW_Y_OFFSET := 115
 TW_NO_EXFAT_FUSE := true
 TW_INCLUDE_REPACKTOOLS := true
 TW_INCLUDE_RESETPROP := true
-TW_LOAD_VENDOR_MODULES := "adsp_loader_dlkm.ko mmi_relay.ko moto_f_usbnet.ko wl2864c.ko exfat.ko mmi_annotate.ko mmi_sc8549.ko qpnp_adaptive_charge.ko wl2866d.ko focaltech_v2_mmi.ko mmi_info.ko mmi-smbcharger-iio.ko sensors_class.ko goodix_v1510_mmi.ko mmi_parallel_charger_iio.ko mmi_sys_temp.ko touchscreen_mmi.ko"
+TW_LOAD_VENDOR_MODULES := "adsp_loader_dlkm.ko mmi_relay.ko moto_f_usbnet.ko wl2864c.ko exfat.ko mmi_annotate.ko qpnp_adaptive_charge.ko wl2868c.ko focaltech_fts.ko mmi_info.ko mmi_charger.ko sensors_class.ko goodix_brl_mmi.ko mmi_sys_temp.ko touchscreen_mmi.ko"
 
 # TWRP-debug
 TARGET_USES_LOGD := true
