@@ -110,7 +110,7 @@ TW_Y_OFFSET := 115
 TW_NO_EXFAT_FUSE := true
 TW_INCLUDE_REPACKTOOLS := true
 TW_INCLUDE_RESETPROP := true
-TW_LOAD_VENDOR_MODULES := "adsp_loader_dlkm.ko mmi_relay.ko moto_f_usbnet.ko wl2864c.ko exfat.ko mmi_annotate.ko qpnp_adaptive_charge.ko wl2868c.ko focaltech_fts.ko mmi_info.ko mmi_charger.ko sensors_class.ko goodix_brl_mmi.ko mmi_sys_temp.ko touchscreen_mmi.ko"
+TW_LOAD_VENDOR_MODULES := "adsp_loader_dlkm.ko mmi_relay.ko moto_f_usbnet.ko wl2864c.ko exfat.ko mmi_annotate.ko qpnp_adaptive_charge.ko wl2868c.ko mmi_info.ko mmi_charger.ko sensors_class.ko goodix_brl_mmi.ko mmi_sys_temp.ko touchscreen_mmi.ko"
 
 # TWRP-debug
 TARGET_USES_LOGD := true
