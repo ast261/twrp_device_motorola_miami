@@ -40,18 +40,35 @@ To build, execute this command:
 To test it:
 
 ```
-# To temporarily boot it
-fastboot boot out/target/product/miami/boot.img 
-
-# To make twrp replace stock recovery temporarily boot twrp and navigate
-to advanced menu and select Flash Current TWRP option.
+# Temporarily boot TWRP (loaded into RAM only, gone after a reboot).
+# This is non-destructive and leaves the installed OS bootable, so it is
+# the recommended way to use TWRP on this device.
+fastboot boot out/target/product/miami/boot.img
 ```
+
+### Making TWRP persistent (and why you usually shouldn't)
+
+This device is **recovery-as-boot** (`BOARD_USES_RECOVERY_AS_BOOT`,
+`TARGET_NO_RECOVERY`): there is no separate `recovery` partition. The TWRP
+ramdisk lives inside the **boot image**, which is the same partition that
+holds the OS (e.g. LineageOS) boot image.
+
+If you boot TWRP and use **Advanced → Flash Current TWRP**, it writes the
+running TWRP image to the **`boot` partition of the active slot**. Because
+boot and recovery share that partition, this **overwrites the OS boot
+image**: the device will then boot into TWRP instead of the OS, and you must
+re-flash the OS `boot.img` to boot the system again.
+
+So on this device there is no way to keep a persistent standalone TWRP
+without sacrificing normal OS boot on that slot. Prefer `fastboot boot`
+above; only use Flash Current TWRP if you deliberately want the device to
+land in TWRP and you keep the OS `boot.img` handy to restore it.
 
 ## Copyright
 
 ```
 #
-# Copyright (C) 2024 The Android Open Source Project
+# Copyright (C) 2024-2026 The Android Open Source Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
