@@ -32,6 +32,10 @@ BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_BOOT_HEADER_VERSION := 3
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image
+# The 5.4.302 kernel only has LZ4 initramfs decompression compiled in
+# (CONFIG_RD_LZ4), not gzip. Build the recovery ramdisk as LZ4 to match,
+# otherwise the kernel cannot unpack it and hangs right after boot.
+BOARD_RAMDISK_USE_LZ4 := true
 
 # Platform
 TARGET_BOARD_PLATFORM := holi
