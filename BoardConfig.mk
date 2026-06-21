@@ -111,7 +111,6 @@ TW_NO_EXFAT_FUSE := true
 TW_INCLUDE_REPACKTOOLS := true
 TW_INCLUDE_RESETPROP := true
 TW_LOAD_VENDOR_MODULES := "adapter_class.ko \
-			   aw862x.ko \
 			   bq2589x_charger.ko \
 			   exfat.ko \
 			   goodix_brl_mmi.ko \
@@ -123,7 +122,6 @@ TW_LOAD_VENDOR_MODULES := "adapter_class.ko \
 			   mmi_info.ko \
 			   mmi_relay.ko \
 			   mmi_sys_temp.ko \
-			   moto_f_usbnet.ko \
 			   qpnp_adaptive_charge.ko \
 			   rt_pd_manager.ko \
 			   sensors_class.ko \
